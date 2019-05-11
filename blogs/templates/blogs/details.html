@@ -1,0 +1,16 @@
+{% include 'blogs/layout.html' %}
+<!--  -->
+
+<a href="/">Go back</a>
+
+{% block body %}
+<!--  -->
+
+<h4>{{ blog.title }}</h4>
+<span>
+  Author: <strong> {{ blog.author }} </strong>
+</span>
+<p>{{ blog.body }}</p>
+
+<!--  -->
+{% endblock %}

@@ -1,0 +1,19 @@
+{% include 'blogs/layout.html' %}
+<!--  -->
+
+<a href="/admin">Admin</a>
+<a href="/admin/blogs/blog/add/">New Blog</a>
+
+{% block body %}
+<!--  -->
+
+<ul>
+  {% for blog in blogs %}
+  <li>
+      <a href="/details/{{blog.id}}">{{ blog.title }}</li>
+  </li>
+  {% endfor %}
+</ul>
+
+<!--  -->
+{% endblock %}
