@@ -3,14 +3,14 @@
 
 <div class="container">
   <a href="/" class="btn center-align">Go back</a>
-  <a href="/" class="btn center-align blue">Update</a>
-  <a href="/" class="btn center-align red">Delete</a>
+  <a href="/blog/update/{{ blog.id }}/" class="btn center-align blue">Update</a>
+  <a href="/blog/delete/{{ blog.id }}" class="btn center-align red">Delete</a>
 </div>
 
 {% block body %}
 <!--  -->
 <div class="container ">
-  <div class="card blue-grey lighten-3 ">
+  <div class="card grey lighten-3 ">
     <h4 class="center-align card-header">{{ blog.title }}</h4>
     <div class="card-action">
       <span>

@@ -2,14 +2,14 @@
 <!--  -->
 <div class="container center">
   <a class="btn" href="/admin">Admin</a>
-  <a class="btn" href="/admin/blogs/blog/add/">New Blog</a>
+  <a class="btn" href="/blog/add/">New Blog</a>
 </div>
 {% block body %}
 <!--  -->
 
 <ul class="collection container hoverable ">
   {% for blog in blogs %}
-  <a href="/details/{{ blog.id }}" class="collection-item center-align">
+  <a href="/blog/details/{{ blog.id }}" class="collection-item center-align">
     {{ blog.title }}
   </a>
   {% endfor %}
