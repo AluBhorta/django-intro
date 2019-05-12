@@ -1,16 +1,27 @@
 {% include 'blogs/layout.html' %}
 <!--  -->
 
-<a href="/">Go back</a>
+<div class="container">
+  <a href="/" class="btn center-align">Go back</a>
+  <a href="/" class="btn center-align blue">Update</a>
+  <a href="/" class="btn center-align red">Delete</a>
+</div>
 
 {% block body %}
 <!--  -->
+<div class="container ">
+  <div class="card blue-grey lighten-3 ">
+    <h4 class="center-align card-header">{{ blog.title }}</h4>
+    <div class="card-action">
+      <span>
+        Author: <strong> {{ blog.author }} </strong>
+      </span>
+    </div>
+    <div class="card-content ">
+      <p>{{ blog.body }}</p>
+    </div>
+    <!--  -->
+  </div>
+</div>
 
-<h4>{{ blog.title }}</h4>
-<span>
-  Author: <strong> {{ blog.author }} </strong>
-</span>
-<p>{{ blog.body }}</p>
-
-<!--  -->
 {% endblock %}
