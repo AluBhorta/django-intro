@@ -1,0 +1,15 @@
+{% include 'blogs/layout.html' %}
+
+<h4 class="center-align">Update Blog {{ id }}</h4>
+<form method="POST" action="/blog/update/{{ id }}/">
+  {% csrf_token %}
+  <div class="container">
+    {{ form }}
+    <button class="btn pink" type="submit">submit</button>
+  </div>
+</form>
+
+<script>
+  const tArea = document.getElementById("id_body");
+  tArea.style.height = "250px";
+</script>
