@@ -39,15 +39,12 @@ def delete_blog(req):
 
 def update_blog(req, id):
     if req.method == 'POST':
-        update_form = UpdateBlogForm(req.POST)
-        if update_form.is_valid():
-            newBlog = update_form.cleaned_data
-            oldBlog = Blog.objects.get(id=id)
+        oldBlog = Blog.objects.get(id=id)
 
-            setattr(oldBlog, 'title', newBlog['title'])
-            setattr(oldBlog, 'author', newBlog['author'])
-            setattr(oldBlog, 'body', newBlog['body'])
-            oldBlog.save()
+        setattr(oldBlog, 'title', req.POST.get('title'))
+        setattr(oldBlog, 'author', req.POST.get('author'))
+        setattr(oldBlog, 'body', req.POST.get('body'))
+        oldBlog.save()
 
         return redirect('/')
 

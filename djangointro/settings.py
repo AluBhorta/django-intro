@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv(filename='.env'))   # make sure .env is in
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rhw=_b5e$@-vd4@&!h4%o9gii*pdl0q2ft(()w(du5-*1!!l_6'
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'alubhorta.com']
 
 
 # Application definition
@@ -78,6 +82,21 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+
+# Cache
+# starting a memcached server on localhost:11211 -> $ memcached -l 127.0.0.1 -p 11211 -d
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': ['127.0.0.1:11211'],
+        'TIMEOUT': 60 * 60,     # in seconds i.e. 1hr
+        'OPTIONS': {
+            # 'server_max_value_length': 1024 * 1024 * 2,   # 2MB # for memcached
+            # 'MAX_ENTRIES': 1000,
+        }
     }
 }
 

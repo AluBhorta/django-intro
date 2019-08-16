@@ -4,7 +4,12 @@
 <div class="container">
   <a href="/" class="btn center-align">Go back</a>
   <a href="/blog/update/{{ blog.id }}/" class="btn center-align blue">Update</a>
-  <form style="display: inline;" action="/blog/delete/" method="POST">
+  <form
+    onsubmit="return confirm('Are you sure you want delete this blog?')"
+    style="display: inline;"
+    action="/blog/delete/"
+    method="POST"
+  >
     {% csrf_token %}
     <input type="hidden" name="id" value="{{ blog.id }}" />
     <button id="delete-blog" class="btn center-align red">
@@ -24,7 +29,7 @@
       </span>
     </div>
     <div class="card-content ">
-      <p>{{ blog.body }}</p>
+      <span>{{ blog.body }}</span>
     </div>
     <!--  -->
   </div>
